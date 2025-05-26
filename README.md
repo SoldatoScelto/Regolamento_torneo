@@ -1,1 +1,0 @@
-# Regolamento_torneo
