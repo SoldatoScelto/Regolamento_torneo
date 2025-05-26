@@ -29,6 +29,7 @@
     }
     ol {
       padding-left: 1.2rem;
+      font-size: 18px;
     }
     li {
       margin-bottom: 0.8rem;
@@ -40,38 +41,44 @@
       font-size: 0.9rem;
       color: #777;
     }
+    .pulsante-container {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
     .btn-iscriviti {
       display: inline-block;
-      background-color: #2ecc71; /* verde */
-      color: white;
-      padding: 12px 24px;
+      background-color: #f9cf07;
+      color: #333;
+      padding: 12px 28px;
       border-radius: 10px;
       text-decoration: none;
       font-size: 1.1rem;
       font-weight: bold;
       transition: background-color 0.3s ease, transform 0.2s ease;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     .btn-iscriviti:hover {
-      background-color: #27ae60;
+      background-color: #e6bb00;
       transform: scale(1.05);
     }
-
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Regolamento del Torneo</h1>
     <ol>
-      <li>Ogni squadra può avere massimo 5 giocatori.</li>
+      <li>Ogni squadra può avere massimo 6 giocatori.</li>
+      <li>Se presenti più di 6 giocatori si cambiano a turno.</li>
       <li>Le partite si giocano in due tempi da 10 minuti.</li>
-      <li>Non è consentito protestare con l’arbitro.</li>
+      <li>Non è consentito protestare contro l’arbitro.</li>
       <li>Il rispetto reciproco tra squadre è obbligatorio.</li>
       <li>La decisione dell’organizzazione è definitiva.</li>
-      <li>I ritardi superiori a 5 minuti comportano la sconfitta a tavolino.</li>
-      <li>Eventuali infortuni devono essere segnalati immediatamente.</li>
     </ol>
-    <a href="https://forms.gle/w6WDehLL48GYgAi59" class="btn-iscriviti" target="_blank">Iscriviti</a>
+    <div class="pulsante-container">
+        <a href="https://forms.gle/w6WDehLL48GYgAi59" class="btn-iscriviti" target="_blank">Iscriviti</a>
+    </div>
+
     <footer>
       © 2025 - Torneo Amatoriale - Tutti i diritti riservati
     </footer>
