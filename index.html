@@ -17,29 +17,37 @@
     <h1>Scanner QR Code</h1>
     <div id="reader"></div>
     <button id="startButton">Inizia a Scansionare</button>
+    <div id="errorMessage" style="color: red;"></div>
 
     <script>
         const html5QrCode = new Html5Qrcode("reader");
 
-        document.getElementById("startButton").addEventListener("click", () => {
-            html5QrCode.start(
-                { facingMode: "environment" }, // Usa la fotocamera posteriore
-                {
-                    fps: 10,    // Frame per secondo
-                    qrbox: 250  // Dimensione della zona di scansione
-                },
-                (decodedText, decodedResult) => {
-                    // Quando un codice QR viene decodificato
-                    console.log(`Codice QR decodificato: ${decodedText}`);
-                    window.open(decodedText, "_blank"); // Apri il link in una nuova scheda
-                },
-                (errorMessage) => {
-                    // Messaggio di errore durante la scansione
-                    console.warn(`Errore di scansione: ${errorMessage}`);
-                }
-            ).catch(err => {
-                console.error(`Errore durante l'avvio della scansione: ${err}`);
-            });
+        document.getElementById("startButton").addEventListener("click", async () => {
+            try {
+                // Richiesta di accesso alla fotocamera
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+                // Avvia la scansione
+                html5QrCode.start(
+                    { facingMode: "environment" },
+                    {
+                        fps: 10,
+                        qrbox: 250
+                    },
+                    (decodedText, decodedResult) => {
+                        console.log(`Codice QR decodificato: ${decodedText}`);
+                        window.open(decodedText, "_blank");
+                    },
+                    (errorMessage) => {
+                        console.warn(`Errore di scansione: ${errorMessage}`);
+                    }
+                ).catch(err => {
+                    console.error(`Errore durante l'avvio della scansione: ${err}`);
+                    document.getElementById("errorMessage").innerText = `Errore: ${err}`;
+                });
+            } catch (err) {
+                console.error(`Accesso alla fotocamera negato: ${err}`);
+                document.getElementById("errorMessage").innerText = `Accesso alla fotocamera negato: ${err.message}`;
+            }
         });
     </script>
 </body>
